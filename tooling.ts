@@ -2,7 +2,7 @@ import { readFileSync } from "fs";
 
 export function initialDataParse(
   file: string,
-  type: string,
+  type: "lines" | "cols",
   param = 2,
   fmt = "int"
 ): string[] | (number | string)[][] {
@@ -11,7 +11,7 @@ export function initialDataParse(
     return input.trim().split(`\n`);
   } else if (type === "cols") {
     const columns: (number | string)[][] = [];
-    const removedNewlines = input.trim().replace("\n", " ").split(" ");
+    const removedNewlines = input.trim().replace(/\n/g, " ").split(" ");
     for (let i = 0; i < param; i++) {
       columns.push([]);
     }

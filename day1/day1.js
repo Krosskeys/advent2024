@@ -11,8 +11,6 @@ for (const k in dataToArray) {
     listb.push(Math.abs(dataToArray[k]));
   }
 }
-console.log('lista: ' + lista.length);
-console.log('listb: ' + listb.length);
 
 function answer(a, b) {
   as = a.sort();
@@ -21,11 +19,12 @@ function answer(a, b) {
   for (const i in as) {
     if (as[i] && bs[i]) {
       const diff = as[i] > bs[i] ? as[i] - bs[i] : bs[i] - as[i];
-    //   console.log(diff);
       total += diff;
     }
   }
   return total;
 }
 
-console.log(answer(lista, listb));
+const similarity = lista.map((e) => e * listb.filter((v) => v === e).length);
+console.log("1a:" + answer(lista, listb));
+console.log("1b:" + similarity.reduce((a,c) => a + c, 0));

@@ -9,7 +9,7 @@ function initialDataParse(file, type, param = 2, fmt = "int") {
     }
     else if (type === "cols") {
         const columns = [];
-        const removedNewlines = input.trim().replace("\n", " ").split(" ");
+        const removedNewlines = input.trim().replace(/\n/g, " ").split(" ");
         for (let i = 0; i < param; i++) {
             columns.push([]);
         }
